@@ -1,11 +1,12 @@
 {
   "name": "@oreodusk/oreonyx",
   "version": "1.1.1",
-  "description": "UI module bundler helper",
+  "description": "Module bundler and code compilation helper. Provide webpack configurations for SSR and CSR applications.",
   "keywords": [
     "oreodusk",
     "oreonnyx",
     "webpack",
+    "babel",
     "nyx"
   ],
   "main": "src/index.js",

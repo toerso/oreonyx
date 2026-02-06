@@ -83,8 +83,8 @@ class Nyx {
         }
         //checking command
         if (name === "build") {
-            this.browserCmdSript.push("webpack", "--config", this.browScriptFile);
-            this.serverCmdSript.push("webpack", "--config", this.serverScriptFile);
+            this.browserCmdSript.push("webpack", "--configuration", this.browScriptFile);
+            this.serverCmdSript.push("webpack", "--configuration", this.serverScriptFile);
             this.csrCmdConfig(optns);
             this.ssrCmdConfig(optns);
 
@@ -93,7 +93,7 @@ class Nyx {
             //true boot for execution
             this.boot = true;
         }else if(name === "ssr") {
-            this.serverCmdSript.push("webpack", "--config", this.serverScriptFile);
+            this.serverCmdSript.push("webpack", "--configuration", this.serverScriptFile);
             this.ssrCmdConfig(optns);
 
             cmdScript = this.serverCmdSript.join(" ");
@@ -102,7 +102,7 @@ class Nyx {
             this.boot = true;
         }else if(name === "csr") {
             //checking whether serve option is passed or not
-            optns.serve ? this.browserCmdSript.push("webpack-dev-server", "--config", this.browScriptFile) : this.browserCmdSript.push("webpack", "--config", this.browScriptFile);
+            optns.serve ? this.browserCmdSript.push("webpack-dev-server", "--configuration", this.browScriptFile) : this.browserCmdSript.push("webpack", "--configuration", this.browScriptFile);
 
             this.csrCmdConfig(optns);
 
