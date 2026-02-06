@@ -251,7 +251,7 @@ cd ~/projects/oreonyx
 # Install dependencies
 npm install
 
-#  Link oreonyx globally(Create a symlink)
+# Link oreonyx globally(Create a symlink)
 npm link
 
 # In your application project

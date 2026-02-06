@@ -27,6 +27,9 @@
   "bugs": {
     "url": "https://github.com/toerso/oreonnyx/issues"
   },
+  "Discussions": {
+    "url": "https://github.com/toerso/oreonnyx/discussions"
+  },
   "homepage": "https://github.com/toerso/oreonnyx#readme",
   "dependencies": {
     "@babel/core": "^7.17.5",
