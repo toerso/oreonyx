@@ -1,6 +1,6 @@
 # oreonyx
 
-> A UI module bundler helper for React and vanilla JavaScript
+> A module bundler and code compilation helper for React and vanilla JavaScript
 
 **oreonyx** is a simplified module bundler and code compilation helper that streamlines JavaScript bundling for both client-side rendering (CSR) and server-side rendering (SSR) applications. It provides an abstraction layer over webpack, eliminating the need for manual configuration.
 
