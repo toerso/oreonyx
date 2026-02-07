@@ -17,13 +17,16 @@ class Babel {
         return {
             test: /\.tsx?$/,
             exclude: /(node_modules|bower_components)/,
-            use: {
-                loader: 'ts-loader',
-                options: {
-                    presets: ['@babel/preset-env', '@babel/preset-react', "@babel/preset-typescript"],
-                    plugins: ['@babel/plugin-transform-runtime']
-                }
-            }
+            use: [
+                {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+                        plugins: ['@babel/plugin-transform-runtime']
+                    }
+                },
+                'ts-loader' // Handles type checking and emits JS
+            ]
         }
     }
 }

@@ -2,7 +2,7 @@ const path = require('path');
 
 class File {
     constructor() {
-        this.APP_ROOT_PATH = process.cwd();//gives the current directory where it is running
+        this.APP_ROOT_PATH = process.cwd(); //gives the current directory where it is running
     }
 
     file_ext(fileWithPathOrName) {

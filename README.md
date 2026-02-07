@@ -45,10 +45,10 @@ Create a `nyx.browser.js` file:
 const { BrowserApi } = require("@oreodusk/oreonyx");
 
 module.exports = BrowserApi
-    .entry("./view/js/browser.js")
-    .setHost("http://localhost:5050")
-    .setMode("development")
-    .run();
+  .entry("./view/js/browser.js")
+  .setHost("http://localhost:5050")
+  .setMode("development")
+  .run();
 ```
 
 #### Server-Side Rendering (SSR)
@@ -59,10 +59,10 @@ Create a `nyx.server.js` file:
 const { ServerApi } = require("@oreodusk/oreonyx");
 
 module.exports = ServerApi
-    .entry("./view/js/server.js")
-    .setHost("http://localhost:5050")
-    .setMode("development")
-    .run();
+  .entry("./view/js/server.js")
+  .setHost("http://localhost:5050")
+  .setMode("development")
+  .run();
 ```
 
 ## API Reference
@@ -77,10 +77,10 @@ The `BrowserApi` handles client-side bundling and provides options for controlli
 const { BrowserApi } = require("@oreodusk/oreonyx");
 
 module.exports = BrowserApi
-    .entry("./path/to/entry.js")
-    .setHost("http://localhost:5050")
-    .setMode("development")
-    .run();
+  .entry("./view/js/browser.js")
+  .setHost("http://localhost:5050")
+  .setMode("development")
+  .run();
 ```
 
 #### Advanced Configuration
@@ -99,10 +99,10 @@ const props = {
 };
 
 module.exports = BrowserApi
-    .entry("./view/js/browser.js")
-    .setHost("http://localhost:5050")
-    .setMode("development")
-    .run(props);
+  .entry("./view/js/browser.js")
+  .setHost("http://localhost:5050")
+  .setMode("development")
+  .run(props);
 ```
 
 #### Configuration Options
@@ -123,10 +123,10 @@ The `ServerApi` handles server-side bundling for SSR applications.
 const { ServerApi } = require("@oreodusk/oreonyx");
 
 module.exports = ServerApi
-    .entry("./view/js/server.js")
-    .setHost("http://localhost:5050")
-    .setMode("development")
-    .run();
+  .entry("./view/js/server.js")
+  .setHost("http://localhost:5050")
+  .setMode("development")
+  .run();
 ```
 
 ## CLI Commands
@@ -256,7 +256,7 @@ npm link
 
 # In your application project
 cd ~/projects/my-app
-npm link oreonyx
+npm link @oreodusk/oreonyx
 
 ```
 

@@ -2,11 +2,13 @@
 const {Command} = require('commander');
 const {spawn} = require('child_process');
 const path = require('path');
+const fs = require('fs');
 const pkg = require('../package.json');
 const chalk = require('chalk');
 const figlet = require('figlet');
 const gradient = require('gradient-string');
 const {createSpinner} = require('nanospinner');
+const { exit } = require('process');
 
 //const sleep = (ms=1000) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -22,8 +24,21 @@ class Nyx {
         this.browserCmdSript = [];
         this.serverCmdSript = [];
         this.spinner = null;
-        this.browScriptFile = path.relative(process.cwd(), 'nyx.browser.js');
-        this.serverScriptFile = path.relative(process.cwd(), 'nyx.server.js');
+        this.browScriptFile = this.findScriptFile('nyx.browser');
+        this.serverScriptFile = this.findScriptFile('nyx.server');
+    }
+
+    findScriptFile(basename) {
+        const jsPath = path.resolve(process.cwd(), `${basename}.js`);
+        const tsPath = path.resolve(process.cwd(), `${basename}.ts`);
+
+        if(fs.existsSync(jsPath)) {
+            return path.relative(process.cwd(), jsPath);
+        }else if(fs.existsSync(tsPath)) {
+            return path.relative(process.cwd(), tsPath);
+        }else {
+            throw new Error(`No script file found. Please make sure that either ${basename}.js or ${basename}.ts exists in the project root directory.`);
+        }
     }
 
     figletConf(str, font, width) {
@@ -83,8 +98,8 @@ class Nyx {
         }
         //checking command
         if (name === "build") {
-            this.browserCmdSript.push("webpack", "--configuration", this.browScriptFile);
-            this.serverCmdSript.push("webpack", "--configuration", this.serverScriptFile);
+            this.browserCmdSript.push("webpack", "--config", this.browScriptFile);
+            this.serverCmdSript.push("webpack", "--config", this.serverScriptFile);
             this.csrCmdConfig(optns);
             this.ssrCmdConfig(optns);
 
@@ -93,7 +108,7 @@ class Nyx {
             //true boot for execution
             this.boot = true;
         }else if(name === "ssr") {
-            this.serverCmdSript.push("webpack", "--configuration", this.serverScriptFile);
+            this.serverCmdSript.push("webpack", "--config", this.serverScriptFile);
             this.ssrCmdConfig(optns);
 
             cmdScript = this.serverCmdSript.join(" ");
@@ -102,7 +117,7 @@ class Nyx {
             this.boot = true;
         }else if(name === "csr") {
             //checking whether serve option is passed or not
-            optns.serve ? this.browserCmdSript.push("webpack-dev-server", "--configuration", this.browScriptFile) : this.browserCmdSript.push("webpack", "--configuration", this.browScriptFile);
+            optns.serve ? this.browserCmdSript.push("webpack-dev-server", "--config", this.browScriptFile) : this.browserCmdSript.push("webpack", "--config", this.browScriptFile);
 
             this.csrCmdConfig(optns);
 
